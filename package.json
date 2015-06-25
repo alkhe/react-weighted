@@ -1,0 +1,22 @@
+{
+  "name": "react-weighted",
+  "version": "0.0.1",
+  "description": "Weight-based grids for React.",
+  "main": "index.js",
+  "scripts": {
+    "test": ":"
+  },
+  "author": "synchronous",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "weight",
+    "weighted",
+    "grid"
+  ],
+  "dependencies": {
+    "babelify": "^6.1.2",
+    "react": "^0.13.3",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
