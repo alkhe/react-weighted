@@ -3,13 +3,14 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	b = require('browserify'),
 	babelify = require('babelify'),
-	source = require('vinyl-source-stream');
+	source = require('vinyl-source-stream'),
+	buf = require('vinyl-buffer');
 
 gulp.task('default', ['watch']);
-gulp.task('build', ['npm', 'browser']);
+gulp.task('build', ['npm', 'browser', 'test']);
 
 gulp.task('watch', function() {
-	gulp.watch('./src/**/*.js', ['npm', 'browser'])
+	gulp.watch(['./src/**/*.js', './test/**/*,js'], ['npm', 'browser', 'test'])
 });
 
 gulp.task('npm', function() {
@@ -21,24 +22,28 @@ gulp.task('npm', function() {
 gulp.task('browser', ['browser-min', 'browser-dev']);
 
 gulp.task('browser-min', function() {
-	b({ entries: './src/index.js' })
+	b({ entries: './src/index.js', standalone: 'Weighted' })
 		.transform(babelify)
+		.external('react')
 		.bundle()
 		.pipe(source('weighted.min.js'))
-		// .pipe(uglify())
+		.pipe(buf())
+		.pipe(uglify())
 		.pipe(gulp.dest('./lib'));
 });
 
 gulp.task('browser-dev', function() {
-	b({ entries: './src/index.js' })
+	b({ entries: './src/index.js', standalone: 'Weighted' })
 		.transform(babelify)
+		.external('react')
 		.bundle()
 		.pipe(source('weighted.js'))
 		.pipe(gulp.dest('./lib'));
 });
 
 gulp.task('test', function() {
-	b({ entries: './test/weighted.js' })
+	b({ entries: './weighted.js', basedir: './test' })
+		.require('./react.js', { expose: 'react' })
 		.transform(babelify)
 		.bundle()
 		.pipe(source('bundle.js'))
