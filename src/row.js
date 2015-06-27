@@ -5,7 +5,7 @@ export default class extends React.Component {
 	render() {
 		return (
 			<Weighted>
-				{ this.props.items }
+				{ this.props.children }
 			</Weighted>
 		);
 	}

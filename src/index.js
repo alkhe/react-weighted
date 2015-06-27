@@ -8,53 +8,22 @@ class Weighted extends React.Component {
 		super();
 		this.state = {};
 	}
-	staticLoaded(width) {
-		// this.setState({
-		// 	staticWidth: this.state.staticWidth + width
-		// });
-
-		console.log(width);
-		console.log(this.state.staticLoaded);
-	}
 	render() {
-		let state = { this };
-		state.staticCount = 0;
-		state.staticLoaded = 0;
-		state.staticWidth = 0;
+		let { children = [], column, reverse } = this.props;
 
-		let { children = [], column } = this.props;
-
-		let total = children.reduce((last, child) => {
-			let weight = child.props.weight
-			if (weight) {
-				return last + +weight;
-			}
-			else {
-				state.staticCount++;
-				return last;
-			}
-		}, 0) || 1;
-
-		let staticFactor = state.staticWidth / (state.staticCount || 1);
-
-		let [minkey, key] = (column == undefined)
-			? ['minWidth', 'width']
-			: ['minHeight', 'height'];
+		let direction = (column ? 'column' : 'row') + (reverse ? '-reverse' : '');
 
 		children = children.map(child => {
-			let factor = `calc(${((+child.props.weight || 1) * 100 / total)}% - ${staticFactor}px)`;
 			return React.addons.cloneWithProps(child, {
 				style: {
-					[key]: factor,
-					[minkey]: factor,
-					display: 'inline-block'
-				},
-				staticLoaded: this.staticLoaded.bind(this)
+					flexGrow: child.props.weight,
+					width: child.props.width
+				}
 			});
 		});
 
 		return (
-			<div style={{ [key]: '100%', [minkey]: '100%' }}>
+			<div style={{ display: 'flex', flexDirection: direction }}>
 				{ children }
 			</div>
 		)

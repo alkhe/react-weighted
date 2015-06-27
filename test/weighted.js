@@ -1,35 +1,49 @@
 import React from 'react';
-import Weighted, { Row, Column } from '../dist/weighted.min';
+import Weighted, { Row, Column } from '../dist/weighted';
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			items: []
+			items: [],
+			weightMode: true
 		};
 	}
-	click() {
+	addItem() {
+		let { refs, state } = this;
+		let metric = state.weightMode ? 'weight' : 'width';
 		this.setState({
 			items: this.state.items.concat({
-				width: React.findDOMNode(this.refs.width).value,
-				weight: React.findDOMNode(this.refs.weight).value,
-				value: React.findDOMNode(this.refs.text).value || ''
+				[metric]: React.findDOMNode(refs[metric]).value,
+				value: React.findDOMNode(refs.text).value
 			})
 		});
 	}
+	switchMode() {
+		this.setState({
+			weightMode: !this.state.weightMode
+		});
+	}
 	render() {
-		let items = this.state.items.map(item =>
+		let { state } = this;
+
+		let items = state.items.map(item =>
 			<Column weight={ item.weight } width={ item.width }>
 				{ item.value }
 			</Column>
 		);
 		return (
 			<div>
-				<input ref='width' placeholder='width' />
-				<input ref='weight' placeholder='weight' />
-				<input ref='text' placeholder='text' />
-				<button onClick={ this.click.bind(this) }>Add</button>
-			<Row items={ items } />
+				{ state.weightMode ? <input type='checkbox' onChange={ this.switchMode.bind(this) } checked /> : <input type='checkbox' onChange={ this.switchMode.bind(this) } /> } Weight Mode
+				<br />
+				{ state.weightMode ? <input ref='weight' placeholder='Weight' /> : <input ref='weight' placeholder='Weight' disabled /> }
+				{ state.weightMode ? <input ref='width' placeholder='Width' disabled /> : <input ref='width' placeholder='Width' /> }
+				<br />
+				<input ref='text' placeholder='Text' />
+				<button onClick={ this.addItem.bind(this) }>Add</button>
+				<Weighted>
+					{ items }
+				</Weighted>
 			</div>
 		);
 	}
