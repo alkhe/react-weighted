@@ -1,23 +1,38 @@
 import React from 'react';
 
-export default class extends React.Component {
+import Row from './row';
+import Column from './column';
+
+class Weighted extends React.Component {
+	constructor() {
+		super();
+		this.state = {};
+	}
 	render() {
-		let { children = [], column } = this.props;
-		let total = children.reduce((last, child) => {
-			return last + +child.props.weight;
-		}, 0);
-		total = total || 1;
-		let [minkey, key] = column == undefined ? ['minWidth', 'width'] : ['minHeight', 'height'];
-		children = children.map(child => React.addons.cloneWithProps(child, { style: {
-			[key]: ((+child.props.weight || 1) * 100 / total) + '%',
-			[minkey]: ((+child.props.weight || 1) * 100 / total) + '%',
-			display: 'inline-block'
-		}}));
+		let { children = [], column, reverse } = this.props;
+
+		let direction = (column ? 'column' : 'row') + (reverse ? '-reverse' : '');
+
+		children = children.map(child => {
+			return React.addons.cloneWithProps(child, {
+				style: {
+					flexGrow: child.props.weight,
+					width: child.props.width
+				}
+			});
+		});
 
 		return (
-			<div style={{ [key]: '100%', [minkey]: '100%' }}>
+			<div style={{ display: 'flex', flexDirection: direction }}>
 				{ children }
 			</div>
 		)
 	}
+}
+
+export default Weighted;
+
+export {
+	Row,
+	Column
 }
