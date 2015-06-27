@@ -1,23 +1,5 @@
 import React from 'react';
-import Weighted from '../lib/weighted.min';
-
-class Row extends React.Component {
-	render() {
-		return (
-			<Weighted>
-				{ this.props.items }
-			</Weighted>
-		);
-	}
-}
-
-class Col extends React.Component {
-	render() {
-		return (
-			<div style={ this.props.style } className='item'>{this.props.children}</div>
-		);
-	}
-}
+import Weighted, { Row, Column } from '../dist/weighted.min';
 
 class App extends React.Component {
 	constructor() {
@@ -27,22 +9,27 @@ class App extends React.Component {
 		};
 	}
 	click() {
-		console.log(this.state)
 		this.setState({
-			items: this.state.items.concat(
-				<Col weight={React.findDOMNode(this.refs.weight).value || 1}>
-					{React.findDOMNode(this.refs.text).value || ''}
-				</Col>
-			)
+			items: this.state.items.concat({
+				width: React.findDOMNode(this.refs.width).value,
+				weight: React.findDOMNode(this.refs.weight).value,
+				value: React.findDOMNode(this.refs.text).value || ''
+			})
 		});
 	}
 	render() {
+		let items = this.state.items.map(item =>
+			<Column weight={ item.weight } width={ item.width }>
+				{ item.value }
+			</Column>
+		);
 		return (
 			<div>
-				<input ref='weight' />
-				<input ref='text' />
-				<button onClick={this.click.bind(this)}>Add</button>
-				<Row items={this.state.items} />
+				<input ref='width' placeholder='width' />
+				<input ref='weight' placeholder='weight' />
+				<input ref='text' placeholder='text' />
+				<button onClick={ this.click.bind(this) }>Add</button>
+			<Row items={ items } />
 			</div>
 		);
 	}

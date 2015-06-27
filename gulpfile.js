@@ -16,7 +16,7 @@ gulp.task('watch', function() {
 gulp.task('npm', function() {
 	gulp.src('./src/**/*.js')
 		.pipe(babel())
-		.pipe(gulp.dest('.'));
+		.pipe(gulp.dest('./lib'));
 });
 
 gulp.task('browser', ['browser-min', 'browser-dev']);
@@ -29,7 +29,7 @@ gulp.task('browser-min', function() {
 		.pipe(source('weighted.min.js'))
 		.pipe(buf())
 		.pipe(uglify())
-		.pipe(gulp.dest('./lib'));
+		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('browser-dev', function() {
@@ -38,7 +38,7 @@ gulp.task('browser-dev', function() {
 		.external('react')
 		.bundle()
 		.pipe(source('weighted.js'))
-		.pipe(gulp.dest('./lib'));
+		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('test', function() {
