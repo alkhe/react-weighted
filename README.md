@@ -9,7 +9,7 @@ A weighted (parts-based) grid is more flexible and applicable than the conventio
 ## Installation
 
 ```sh
-$ npm i --save edge/react-weighted
+$ npm i react-weighted
 ```
 
 A `react-weighted` browserify build is also available, accessible globally as `Weighted`.

@@ -1,6 +1,6 @@
 {
   "name": "react-weighted",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Weight-based grids for React.",
   "main": "index.js",
   "scripts": {
