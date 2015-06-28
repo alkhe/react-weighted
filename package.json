@@ -15,6 +15,12 @@
     "grid"
   ],
   "dependencies": {
+    "react": "^0.13.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "gulp": "^3.9.0",
@@ -25,10 +31,6 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "directories": {
-    "test": "test"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://edge@github.com/edge/react-weighted.git"
