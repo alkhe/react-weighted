@@ -1,10 +1,10 @@
 import React from 'react';
-import Weighted from '.';
+import Grid from '.';
 
 export default class extends React.Component {
 	render() {
 		return (
-			<Weighted row { ...this.props } />
+			<Grid row { ...this.props } />
 		);
 	}
 }

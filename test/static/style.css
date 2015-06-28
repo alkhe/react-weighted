@@ -1,0 +1,50 @@
+html, body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	min-height: 100%;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: 'Source Sans Pro', sans;
+}
+
+.lgray {
+	background: #444;
+}
+
+.mgray {
+	background: #333;
+}
+
+.dgray {
+	background: #222;
+}
+
+.red-text {
+	color: #f77;
+}
+
+.green-text {
+	color: #7f7;
+}
+
+.blue-text {
+	color: #77f;
+}
+
+.grid {
+	padding: 5px;
+}
+
+.grid > * {
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+}
+
+.grid * {
+	border-radius: 2px;
+}

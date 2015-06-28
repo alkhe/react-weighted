@@ -2,8 +2,9 @@ import React from 'react';
 
 export default class extends React.Component {
 	render() {
+		let { weight, size } = this.props;
 		return (
-			<div { ...this.props } />
+			<div style={{ flexGrow: weight, flexBasis: size }} { ...this.props } />
 		);
 	}
 }

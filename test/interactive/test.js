@@ -1,5 +1,5 @@
 import React from 'react';
-import Weighted, { Row, Column, Cell } from '../dist/weighted';
+import Grid, { Row, Column, Cell } from 'react-weighted';
 
 class App extends React.Component {
 	constructor() {
@@ -7,7 +7,8 @@ class App extends React.Component {
 		this.state = {
 			items: [],
 			weightMode: true,
-			rowMode: true
+			rowMode: true,
+			reverse: false
 		};
 	}
 	addItem() {
@@ -28,6 +29,11 @@ class App extends React.Component {
 	switchRowMode() {
 		this.setState({
 			rowMode: !this.state.rowMode
+		});
+	}
+	reverse() {
+		this.setState({
+			reverse: !this.state.reverse
 		});
 	}
 	render() {
@@ -59,19 +65,30 @@ class App extends React.Component {
 				<Column>{ items }</Column>
 			];
 
+		let reverse;
+		[reverse, grid] = state.reverse
+			? [
+				<input type='checkbox' onChange={ this.reverse.bind(this) } checked />,
+				React.addons.cloneWithProps(grid, { reverse: true })
+			] : [
+				<input type='checkbox' onChange={ this.reverse.bind(this) } />,
+				grid
+			];
+
 		return (
 			<div>
 				{ weightMode } Weight Mode
 				{ rowMode } Row Mode
+				{ reverse } Reverse
 				<br />
 				{ weightInput }
 				{ sizeInput }
 				<br />
 				<input ref='text' placeholder='Text' />
 				<button onClick={ this.addItem.bind(this) }>Add</button>
-				<Row width='100%' height='500px'>
+				<Grid width='100%' height='500px'>
 					{ grid }
-				</Row>
+				</Grid>
 			</div>
 		);
 	}
