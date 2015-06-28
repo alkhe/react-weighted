@@ -44,17 +44,17 @@ var App = (function (_React$Component) {
 					{ weight: '1', className: 'mgray' },
 					_react2['default'].createElement(
 						_reactWeighted.Cell,
-						{ weight: '1', className: 'dgray' },
+						{ weight: '1', priority: '2', className: 'dgray' },
 						'1:1'
 					),
 					_react2['default'].createElement(
 						_reactWeighted.Cell,
-						{ weight: '7', className: 'dgray' },
+						{ weight: '7', shrink: '0', priority: '0', className: 'dgray' },
 						'1:7'
 					),
 					_react2['default'].createElement(
 						_reactWeighted.Row,
-						{ weight: '1', align: 'center', className: 'dgray' },
+						{ weight: '1', priority: '1', align: 'center', className: 'dgray' },
 						_react2['default'].createElement(
 							_reactWeighted.Cell,
 							{ size: '60%', towards: 'end', className: 'mgray' },
@@ -264,18 +264,20 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
             u = e.reverse,
             i = e.weight,
             a = e.size,
-            l = e.align,
-            f = e.along,
-            c = e.towards,
-            p = { flexGrow: i, flexBasis: a, alignSelf: o[c] || c };if (t) {
-          var s = (r ? "column" : "row") + (u ? "-reverse" : ""),
-              d = r ? ["height", "width"] : ["width", "height"],
-              v = n(d, 2),
-              y = v[0],
-              b = v[1],
-              g = e[y],
-              h = e[b];p.justifyContent = o[l] || l, p.alignItems = o[f] || f, p.display = "flex", p.flexDirection = s, p[y] = g, p[b] = h;
-        }return (delete e.width, delete e.height, delete e.row, delete e.column, delete e.reverse, delete e.weight, delete e.size, delete e.align, delete e.along, delete e.towards, p);
+            l = e.shrink,
+            f = e.align,
+            c = e.along,
+            p = e.towards,
+            s = e.priority,
+            d = { flexGrow: i, flexBasis: a, flexShrink: l, alignSelf: o[p] || p, order: s };if (t) {
+          var v = (r ? "column" : "row") + (u ? "-reverse" : ""),
+              y = r ? ["height", "width"] : ["width", "height"],
+              b = n(y, 2),
+              h = b[0],
+              g = b[1],
+              w = e[h],
+              O = e[g];d.justifyContent = o[f] || f, d.alignItems = o[c] || c, d.display = "flex", d.flexDirection = v, d[h] = w, d[g] = O;
+        }return (delete e.width, delete e.height, delete e.row, delete e.column, delete e.reverse, delete e.weight, delete e.size, delete e.shrink, delete e.align, delete e.along, delete e.towards, delete e.priority, d);
       }, t.exports = r["default"];
     }, {}], 4: [function (e, t, r) {
       "use strict";function n(e) {
@@ -315,14 +317,14 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
           v = n(d),
           y = e("./cell"),
           b = n(y),
-          g = e("./flexify"),
-          h = n(g),
+          h = e("./flexify"),
+          g = n(h),
           w = (function (e) {
         function t() {
           o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).call(this), this.state = {};
         }return (u(t, e), a(t, [{ key: "render", value: function value() {
             var e = this.props,
-                t = h["default"](e, !0);return c["default"].createElement("div", i({ style: t }, e), e.children);
+                t = g["default"](e, !0);return c["default"].createElement("div", i({ style: t }, e), e.children);
           } }]), t);
       })(c["default"].Component);r["default"] = w, r.Row = s["default"], r.Column = v["default"], r.Cell = b["default"];
     }, { "./cell": 1, "./column": 2, "./flexify": 3, "./row": 5, react: "react" }], 5: [function (e, t, r) {

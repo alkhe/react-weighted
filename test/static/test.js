@@ -9,13 +9,13 @@ class App extends React.Component {
 					1
 				</Cell>
 				<Column weight='1' className='mgray'>
-					<Cell weight='1' className='dgray'>
+					<Cell weight='1' priority='2' className='dgray'>
 						1:1
 					</Cell>
-					<Cell weight='7' className='dgray'>
+					<Cell weight='7' shrink='0' priority='0' className='dgray'>
 						1:7
 					</Cell>
-					<Row weight='1' align='center' className='dgray'>
+					<Row weight='1' priority='1' align='center' className='dgray'>
 						<Cell size='60%' towards='end' className='mgray'>
 							1:1(c):60%(e)
 						</Cell>

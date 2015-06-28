@@ -53,17 +53,17 @@ class Component extends React.Component {
 
 #### Grid
 
-Produces a `Grid` with width `w`.
+This will give the grid a top-level width of `w`.
 ```html
 <Grid width={ w } />
 ```
 
-Produces a `Grid` with height `h`.
+This will give the grid a top-level height of `h`.
 ```html
 <Grid width={ h } />
 ```
 
-Produces a `Grid` with elements in reverse order. This is analogous to `direction: (dir)-reverse`.
+This will reverse the order of elements in the grid. (`direction: (dir)-reverse`)
 ```html
 <Grid reverse />
 ```
@@ -72,39 +72,49 @@ Produces a `Grid` with elements in reverse order. This is analogous to `directio
 
 All of these props also work for `Row`s and `Column`s.
 
-Produces a `Cell` with weight `w`. This will give the cell `w` parts in the layout fraction. This is analogous to `flex-grow`.
+This make the cell grow by `w`, giving it `w` parts in the layout fraction when above its default width (or if no default width). (`flex-grow`)
 ```html
 <Cell weight={ w } />
 ```
 
-Produces a `Cell` with size `s`. This will make the cell be of static size `s`, with size being width or height, if the parent is a `Row` of `Column`, respectively. This is analogous to `flex-basis`.
+This will make the cell shrink by `s`, giving it `s` parts in the layout fraction when below its default width. (`flex-shrink`)
+```html
+<Cell shrink={ s } />
+```
+
+This will make the cell be of static size `s`, with size being width or height, if the parent is a `Row` or `Column`, respectively. (`flex-basis`)
 ```html
 <Cell size={ s } />
 ```
 
-Produces a `Cell` with that will align along `a` of parent. This is analogous to `align-self`.
+This will make the cell align along `a` of parent. (`align-self`)
 `(auto|start|end|center|baseline|stretch)`
 ```html
 <Cell towards={ a } />
+```
+
+This will give the cell `n` priority. The cells with lowest priority in a `Row` or `Column` appear first. (`order`)
+```html
+<Cell priority={ n } />
 ```
 
 #### Rows/Columns
 
 The following apply to both `Row`s and `Column`s, but `Row`s will be used in each example for simplicity.
 
-Produces a `Row` with elements justified to `a` of the row. This is analogous to `justify-content`.
+This will justify elements to `a` of the row. (`justify-content`)
 `(start|end|center|between|around)`
 ```html
 <Row align={ a } />
 ```
 
-Produces a `Row` with elements aligned along `a` of the row. This is analogous to `align-items`.
+This will align elements along `a` of the row. (`align-items`)
 `(start|end|center|baseline|stretch)`
 ```html
 <Row along={ a } />
 ```
 
-Produces a `Row` with elements in reverse order. This is analogous to `direction: (dir)-reverse`.
+This will reverse the order of elements in the row. (`direction: (dir)-reverse`)
 ```html
 <Row reverse />
 ```

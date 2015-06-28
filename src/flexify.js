@@ -6,12 +6,14 @@ let alignMap = {
 };
 
 export default function(props, grid) {
-	let { column, reverse, weight, size, align, along, towards } = props;
+	let { column, reverse, weight, shrink, size, align, along, towards, priority } = props;
 
 	let style = {
 		flexGrow: weight,
+		flexShrink: shrink,
 		flexBasis: size,
 		alignSelf: alignMap[towards] || towards,
+		order: priority
 	};
 
 	if (grid) {
@@ -35,10 +37,12 @@ export default function(props, grid) {
 
 	delete props.reverse;
 	delete props.weight;
+	delete props.shrink;
 	delete props.size;
 	delete props.align;
 	delete props.along;
 	delete props.towards;
+	delete props.priority;
 
 	return style;
 };
