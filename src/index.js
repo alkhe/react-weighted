@@ -17,15 +17,6 @@ class Grid extends React.Component {
 		let [metric, antimetric] = (column ? ['height', 'width'] : ['width', 'height']);
 		let [staticMetric, staticAntimetric] = [this.props[metric], this.props[antimetric]];
 
-		/*children = (children instanceof Array ? children : [children]).map(child =>
-			React.addons.cloneWithProps(child, {
-				style: {
-					flexGrow: child.props.weight,
-					flexBasis: child.props.size
-				}
-			})
-		);*/
-
 		delete props.width;
 		delete props.height;
 		delete props.weight;
@@ -40,7 +31,7 @@ class Grid extends React.Component {
 					flexBasis: size,
 					[metric]: staticMetric || '100%',
 					[antimetric]: staticAntimetric
-				}} { ...this.props }>
+				}} { ...props }>
 				{ children }
 			</div>
 		);
