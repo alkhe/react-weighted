@@ -1,0 +1,70 @@
+html, body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+* {
+	/*box-sizing: border-box;*/
+	font-family: 'Source Sans Pro', sans;
+}
+
+#wrap {
+	display: table;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#test {
+	display: table-cell;
+}
+
+.mgray {
+	background: #333;
+}
+
+.dgray {
+	background: #222;
+}
+
+.red-text {
+	color: #f77;
+}
+
+.green-text {
+	color: #7f7;
+}
+
+.blue-text {
+	color: #77f;
+}
+
+.grid {
+	height: 100%;
+	padding: 5px;
+}
+
+.grid .mgray, .grid .dgray {
+	padding: 5px;
+	margin: 5px;
+	border-radius: 2px;
+}
+
+.grid * {
+	text-align: center;
+}
+
+.grid > * {
+	color: #f77;
+}
+
+.grid > * > * {
+	color: #7f7;
+}
+
+.grid > * > * > * {
+	color: #77f;
+}

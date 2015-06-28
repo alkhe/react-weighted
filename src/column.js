@@ -1,11 +1,10 @@
 import React from 'react';
+import Grid from '.';
 
 export default class extends React.Component {
 	render() {
 		return (
-			<div style={ this.props.style } className='item'>
-				{ this.props.children }
-			</div>
+			<Grid column { ...this.props } />
 		);
 	}
 }

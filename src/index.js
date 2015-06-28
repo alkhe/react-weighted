@@ -2,37 +2,31 @@ import React from 'react';
 
 import Row from './row';
 import Column from './column';
+import Cell from './cell';
 
-class Weighted extends React.Component {
+import flexify from './flexify';
+
+class Grid extends React.Component {
 	constructor() {
 		super();
 		this.state = {};
 	}
 	render() {
-		let { children = [], column, reverse } = this.props;
-
-		let direction = (column ? 'column' : 'row') + (reverse ? '-reverse' : '');
-
-		children = children.map(child => {
-			return React.addons.cloneWithProps(child, {
-				style: {
-					flexGrow: child.props.weight,
-					width: child.props.width
-				}
-			});
-		});
+		let { props } = this;
+		let flex = flexify(props, true);
 
 		return (
-			<div style={{ display: 'flex', flexDirection: direction }}>
-				{ children }
+			<div style={ flex } { ...props }>
+				{ props.children }
 			</div>
-		)
+		);
 	}
 }
 
-export default Weighted;
+export default Grid;
 
 export {
 	Row,
-	Column
-}
+	Column,
+	Cell
+};

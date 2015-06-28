@@ -32,22 +32,37 @@ gulp.task('browser-min', function() {
 		.pipe(gulp.dest('./dist'));
 });
 
+
 gulp.task('browser-dev', function() {
 	return b({ entries: './src/index.js', standalone: 'Weighted' })
 		.transform(babelify)
 		.external('react')
 		.bundle()
 		.pipe(source('weighted.js'))
+		// For some reason, the build fails when these two lines are not present
 		.pipe(buf())
 		.pipe(uglify())
 		.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('test', ['browser-dev'], function() {
-	return b({ entries: './weighted.js', basedir: './test' })
-		.require('./react.js', { expose: 'react' })
+gulp.task('test', ['test-interactive', 'test-static']);
+
+gulp.task('test-interactive', ['browser-dev'], function() {
+	return b({ entries: './test.js', basedir: './test/interactive' })
+		.require('../react.js', { expose: 'react' })
+		.require('../../dist/weighted.js', { expose: 'react-weighted' })
 		.transform(babelify)
 		.bundle()
 		.pipe(source('bundle.js'))
-		.pipe(gulp.dest('./test'));
+		.pipe(gulp.dest('./test/interactive'));
+});
+
+gulp.task('test-static', ['browser-dev'], function() {
+	return b({ entries: './test.js', basedir: './test/static' })
+		.require('../react.js', { expose: 'react' })
+		.require('../../dist/weighted.js', { expose: 'react-weighted' })
+		.transform(babelify)
+		.bundle()
+		.pipe(source('bundle.js'))
+		.pipe(gulp.dest('./test/static'));
 });
