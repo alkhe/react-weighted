@@ -273,13 +273,13 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
         var r = e.column,
             u = e.reverse,
             i = e.weight,
-            a = e.size,
-            l = e.shrink,
+            a = e.shrink,
+            l = e.size,
             f = e.align,
             c = e.along,
             p = e.towards,
             s = e.priority,
-            d = { flexGrow: i, flexBasis: a, flexShrink: l, alignSelf: o[p] || p, order: s };if (t) {
+            d = { flexGrow: i, flexShrink: a, flexBasis: l, alignSelf: o[p] || p, order: s };if (t) {
           var v = (r ? "column" : "row") + (u ? "-reverse" : ""),
               y = r ? ["height", "width"] : ["width", "height"],
               b = n(y, 2),
@@ -287,7 +287,7 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
               g = b[1],
               w = e[h],
               O = e[g];d.justifyContent = o[f] || f, d.alignItems = o[c] || c, d.display = "flex", d.flexDirection = v, d[h] = w, d[g] = O;
-        }return (delete e.width, delete e.height, delete e.row, delete e.column, delete e.reverse, delete e.weight, delete e.size, delete e.shrink, delete e.align, delete e.along, delete e.towards, delete e.priority, d);
+        }return (delete e.width, delete e.height, delete e.row, delete e.column, delete e.reverse, delete e.weight, delete e.shrink, delete e.size, delete e.align, delete e.along, delete e.towards, delete e.priority, d);
       }, t.exports = r["default"];
     }, {}], 4: [function (e, t, r) {
       "use strict";function n(e) {
