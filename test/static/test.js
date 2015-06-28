@@ -5,6 +5,24 @@ class App extends React.Component {
 	render() {
 		return (
 			<Grid height='100%' className='grid dgray'>
+				<Grid height='100px'>
+					<Cell weight='1'>
+						This is a cell of weight 1.
+					</Cell>
+					<Cell weight='2'>
+						This is a cell of weight 2.
+					</Cell>
+					<Row weight='1'>
+						<Cell weight='2'>
+							This is a cell of weight 2 in a row of weight 1.
+						</Cell>
+						<Column weight='1'>
+							<Cell>
+								This is a cell of weight 1 in a column of weight 1 in a row of weight 1.
+							</Cell>
+						</Cell>
+					</Cell>
+				</Grid>
 				<Cell weight='1' className='mgray'>
 					1
 				</Cell>
