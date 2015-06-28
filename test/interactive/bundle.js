@@ -277,14 +277,14 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
             l = e.align,
             f = e.along,
             c = e.towards,
-            p = { flexGrow: i, flexBasis: a, justifyContent: o[l] || l, alignItems: o[f] || f, alignSelf: o[c] || c };if (t) {
+            p = { flexGrow: i, flexBasis: a, alignSelf: o[c] || c };if (t) {
           var s = (r ? "column" : "row") + (u ? "-reverse" : ""),
               d = r ? ["height", "width"] : ["width", "height"],
               v = n(d, 2),
               y = v[0],
               b = v[1],
               g = e[y],
-              h = e[b];p.display = "flex", p.flexDirection = s, p[y] = g, p[b] = h;
+              h = e[b];p.justifyContent = o[l] || l, p.alignItems = o[f] || f, p.display = "flex", p.flexDirection = s, p[y] = g, p[b] = h;
         }return (delete e.width, delete e.height, delete e.row, delete e.column, delete e.reverse, delete e.weight, delete e.size, delete e.align, delete e.along, delete e.towards, p);
       }, t.exports = r["default"];
     }, {}], 4: [function (e, t, r) {

@@ -11,8 +11,6 @@ export default function(props, grid) {
 	let style = {
 		flexGrow: weight,
 		flexBasis: size,
-		justifyContent: alignMap[align] || align,
-		alignItems: alignMap[along] || along,
 		alignSelf: alignMap[towards] || towards,
 	};
 
@@ -21,6 +19,8 @@ export default function(props, grid) {
 		let [metric, antimetric] = (column ? ['height', 'width'] : ['width', 'height']);
 		let [staticMetric, staticAntimetric] = [props[metric], props[antimetric]];
 
+		style.justifyContent = alignMap[align] || align;
+		style.alignItems = alignMap[along] || along;
 		style.display = 'flex';
 		style.flexDirection = direction;
 		style[metric] = staticMetric;
