@@ -83,7 +83,7 @@ Produces a `Cell` with size `s`. This will make the cell be of static size `s`, 
 ```
 
 Produces a `Cell` with that will align along `a` of parent. This is analogous to `align-self`.
-(auto|start|end|center|baseline|stretch)
+`(auto|start|end|center|baseline|stretch)`
 ```html
 <Cell towards={ a } />
 ```
@@ -93,11 +93,13 @@ Produces a `Cell` with that will align along `a` of parent. This is analogous to
 The following apply to both `Row`s and `Column`s, but `Row`s will be used in each example for simplicity.
 
 Produces a `Row` with elements justified to `a` of the row. This is analogous to `justify-content`.
+`(start|end|center|between|around)`
 ```html
 <Row align={ a } />
 ```
 
 Produces a `Row` with elements aligned along `a` of the row. This is analogous to `align-items`.
+`(start|end|center|baseline|stretch)`
 ```html
 <Row along={ a } />
 ```
