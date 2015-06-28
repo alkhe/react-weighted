@@ -1,10 +1,13 @@
 import React from 'react';
+import flexify from './flexify';
 
 export default class extends React.Component {
 	render() {
-		let { weight, size } = this.props;
+		let { props } = this;
+		let flex = flexify(props);
+
 		return (
-			<div style={{ flexGrow: weight, flexBasis: size }} { ...this.props } />
+			<div style={ flex } { ...this.props } />
 		);
 	}
 }

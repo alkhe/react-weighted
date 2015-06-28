@@ -33,39 +33,98 @@ var App = (function (_React$Component) {
 		value: function render() {
 			return _react2['default'].createElement(
 				_reactWeighted2['default'],
-				{ width: '100%', height: '800px', className: 'grid dgray red-text' },
+				{ height: '100%', className: 'grid dgray' },
 				_react2['default'].createElement(
 					_reactWeighted.Cell,
 					{ weight: '1', className: 'mgray' },
 					'1'
 				),
 				_react2['default'].createElement(
-					_reactWeighted.Cell,
+					_reactWeighted.Column,
 					{ weight: '1', className: 'mgray' },
-					'1'
+					_react2['default'].createElement(
+						_reactWeighted.Cell,
+						{ weight: '1', className: 'dgray' },
+						'1:1'
+					),
+					_react2['default'].createElement(
+						_reactWeighted.Cell,
+						{ weight: '7', className: 'dgray' },
+						'1:7'
+					),
+					_react2['default'].createElement(
+						_reactWeighted.Row,
+						{ weight: '1', align: 'center', className: 'dgray' },
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ size: '60%', towards: 'end', className: 'mgray' },
+							'1:1(c):60%(e)'
+						)
+					)
 				),
 				_react2['default'].createElement(
-					_reactWeighted.Cell,
-					{ weight: '2', className: 'mgray green-text' },
-					'2'
+					_reactWeighted.Column,
+					{ weight: '2' },
+					_react2['default'].createElement(
+						_reactWeighted.Cell,
+						{ weight: '2', className: 'mgray' },
+						'2:2'
+					),
+					_react2['default'].createElement(
+						_reactWeighted.Cell,
+						{ weight: '3' },
+						'2:3 (spacer)'
+					)
 				),
 				_react2['default'].createElement(
 					_reactWeighted.Column,
 					{ weight: '3', className: 'mgray' },
 					_react2['default'].createElement(
-						_reactWeighted.Cell,
-						{ weight: '2', className: 'dgray blue-text' },
-						'2'
+						_reactWeighted.Row,
+						{ weight: '1', align: 'end', className: 'dgray' },
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ size: '100px', className: 'mgray' },
+							'3:1(e):100px'
+						)
 					),
 					_react2['default'].createElement(
-						_reactWeighted.Cell,
-						{ weight: '4', className: 'dgray blue-text' },
-						'2'
+						_reactWeighted.Row,
+						{ weight: '3', className: 'dgray' },
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ weight: '1', className: 'mgray' },
+							'3:3:1'
+						),
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ weight: '2' },
+							'3:3:2(spacer)'
+						),
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ weight: '1', className: 'mgray' },
+							'3:3:1'
+						)
 					),
 					_react2['default'].createElement(
-						_reactWeighted.Cell,
-						{ weight: '4', className: 'dgray blue-text' },
-						'2'
+						_reactWeighted.Row,
+						{ weight: '2', className: 'dgray' },
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ size: '120px', towards: 'end', className: 'mgray' },
+							'3:2:120px(e)'
+						),
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ size: '120px', towards: 'start', className: 'mgray' },
+							'3:2:120px(s)'
+						),
+						_react2['default'].createElement(
+							_reactWeighted.Cell,
+							{ size: '120px', towards: 'center', className: 'mgray' },
+							'3:2:120px(c)'
+						)
 					)
 				)
 			);
@@ -128,16 +187,17 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
       },
           f = e("react"),
           c = n(f),
-          p = (function (e) {
+          p = e("./flexify"),
+          s = n(p),
+          d = (function (e) {
         var t = function t() {
           o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
         };return (u(t, e), a(t, [{ key: "render", value: function value() {
             var e = this.props,
-                t = e.weight,
-                r = e.size;return c["default"].createElement("div", i({ style: { flexGrow: t, flexBasis: r } }, this.props));
+                t = s["default"](e);return c["default"].createElement("div", i({ style: t }, this.props));
           } }]), t);
-      })(c["default"].Component);r["default"] = p, t.exports = r["default"];
-    }, { react: "react" }], 2: [function (e, t, r) {
+      })(c["default"].Component);r["default"] = d, t.exports = r["default"];
+    }, { "./flexify": 3, react: "react" }], 2: [function (e, t, r) {
       "use strict";function n(e) {
         return e && e.__esModule ? e : { "default": e };
       }function o(e, t) {
@@ -171,28 +231,15 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
           c = n(f),
           p = e("."),
           s = n(p),
-          v = (function (e) {
+          d = (function (e) {
         var t = function t() {
           o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
         };return (u(t, e), a(t, [{ key: "render", value: function value() {
             return c["default"].createElement(s["default"], i({ column: !0 }, this.props));
           } }]), t);
-      })(c["default"].Component);r["default"] = v, t.exports = r["default"];
-    }, { ".": 3, react: "react" }], 3: [function (e, t, r) {
-      "use strict";function n(e) {
-        return e && e.__esModule ? e : { "default": e };
-      }function o(e, t, r) {
-        return (t in e ? Object.defineProperty(e, t, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : e[t] = r, e);
-      }function u(e, t) {
-        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-      }function i(e, t) {
-        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (e.__proto__ = t);
-      }Object.defineProperty(r, "__esModule", { value: !0 });var a = Object.assign || function (e) {
-        for (var t = 1; t < arguments.length; t++) {
-          var r = arguments[t];for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
-        }return e;
-      },
-          l = (function () {
+      })(c["default"].Component);r["default"] = d, t.exports = r["default"];
+    }, { ".": 4, react: "react" }], 3: [function (e, t, r) {
+      "use strict";Object.defineProperty(r, "__esModule", { value: !0 });var n = (function () {
         function e(e, t) {
           var r = [],
               n = !0,
@@ -212,7 +259,37 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
           if (Array.isArray(t)) return t;if (Symbol.iterator in Object(t)) return e(t, r);throw new TypeError("Invalid attempt to destructure non-iterable instance");
         };
       })(),
-          f = (function () {
+          o = { start: "flex-start", end: "flex-end", between: "space-between", around: "space-around" };r["default"] = function (e, t) {
+        var r = e.column,
+            u = e.reverse,
+            i = e.weight,
+            a = e.size,
+            l = e.align,
+            f = e.along,
+            c = e.towards,
+            p = { flexGrow: i, flexBasis: a, justifyContent: o[l] || l, alignItems: o[f] || f, alignSelf: o[c] || c };if (t) {
+          var s = (r ? "column" : "row") + (u ? "-reverse" : ""),
+              d = r ? ["height", "width"] : ["width", "height"],
+              v = n(d, 2),
+              y = v[0],
+              b = v[1],
+              g = e[y],
+              h = e[b];p.display = "flex", p.flexDirection = s, p[y] = g, p[b] = h;
+        }return (delete e.width, delete e.height, delete e.row, delete e.column, delete e.reverse, delete e.weight, delete e.size, delete e.align, delete e.along, delete e.towards, p);
+      }, t.exports = r["default"];
+    }, {}], 4: [function (e, t, r) {
+      "use strict";function n(e) {
+        return e && e.__esModule ? e : { "default": e };
+      }function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+      }function u(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (e.__proto__ = t);
+      }Object.defineProperty(r, "__esModule", { value: !0 });var i = Object.assign || function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var r = arguments[t];for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
+        }return e;
+      },
+          a = (function () {
         function e(e, t) {
           for (var r = 0; r < t.length; r++) {
             var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
@@ -221,7 +298,7 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
           return (r && e(t.prototype, r), n && e(t, n), t);
         };
       })(),
-          c = function c(e, t, r) {
+          l = function l(e, t, r) {
         for (var n = !0; n;) {
           var o = e,
               u = t,
@@ -230,36 +307,25 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
           }var f = Object.getPrototypeOf(o);if (null === f) return void 0;e = f, t = u, r = i, n = !0;
         }
       },
-          p = e("react"),
+          f = e("react"),
+          c = n(f),
+          p = e("./row"),
           s = n(p),
-          v = e("./row"),
-          d = n(v),
-          y = e("./column"),
+          d = e("./column"),
+          v = n(d),
+          y = e("./cell"),
           b = n(y),
-          h = e("./cell"),
-          g = n(h),
+          g = e("./flexify"),
+          h = n(g),
           w = (function (e) {
         function t() {
-          u(this, t), c(Object.getPrototypeOf(t.prototype), "constructor", this).call(this), this.state = {};
-        }return (i(t, e), f(t, [{ key: "render", value: function value() {
-            var e,
-                t = this.props,
-                r = t.children,
-                n = void 0 === r ? [] : r,
-                u = t.column,
-                i = t.reverse,
-                f = t.weight,
-                c = t.size,
-                p = (u ? "column" : "row") + (i ? "-reverse" : ""),
-                v = u ? ["height", "width"] : ["width", "height"],
-                d = l(v, 2),
-                y = d[0],
-                b = d[1],
-                h = this.props[y],
-                g = this.props[b];return (delete t.width, delete t.height, delete t.weight, delete t.row, delete t.column, s["default"].createElement("div", a({ style: (e = { display: "inline-flex", flexDirection: p, flexGrow: f, flexBasis: c }, o(e, y, h || "100%"), o(e, b, g), e) }, this.props), n));
+          o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).call(this), this.state = {};
+        }return (u(t, e), a(t, [{ key: "render", value: function value() {
+            var e = this.props,
+                t = h["default"](e, !0);return c["default"].createElement("div", i({ style: t }, e), e.children);
           } }]), t);
-      })(s["default"].Component);r["default"] = w, r.Row = d["default"], r.Column = b["default"], r.Cell = g["default"];
-    }, { "./cell": 1, "./column": 2, "./row": 4, react: "react" }], 4: [function (e, t, r) {
+      })(c["default"].Component);r["default"] = w, r.Row = s["default"], r.Column = v["default"], r.Cell = b["default"];
+    }, { "./cell": 1, "./column": 2, "./flexify": 3, "./row": 5, react: "react" }], 5: [function (e, t, r) {
       "use strict";function n(e) {
         return e && e.__esModule ? e : { "default": e };
       }function o(e, t) {
@@ -293,14 +359,14 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
           c = n(f),
           p = e("."),
           s = n(p),
-          v = (function (e) {
+          d = (function (e) {
         var t = function t() {
           o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
         };return (u(t, e), a(t, [{ key: "render", value: function value() {
             return c["default"].createElement(s["default"], i({ row: !0 }, this.props));
           } }]), t);
-      })(c["default"].Component);r["default"] = v, t.exports = r["default"];
-    }, { ".": 3, react: "react" }] }, {}, [3])(3);
+      })(c["default"].Component);r["default"] = d, t.exports = r["default"];
+    }, { ".": 4, react: "react" }] }, {}, [4])(4);
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})

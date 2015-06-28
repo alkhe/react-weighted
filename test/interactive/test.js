@@ -59,10 +59,10 @@ class App extends React.Component {
 		let [rowMode, grid] = state.rowMode
 			? [
 				<input type='checkbox' onChange={ this.switchRowMode.bind(this) } checked />,
-				<Row>{ items }</Row>
+				<Row height='500px'>{ items }</Row>
 			] : [
 				<input type='checkbox' onChange={ this.switchRowMode.bind(this) } />,
-				<Column>{ items }</Column>
+				<Column height='500px'>{ items }</Column>
 			];
 
 		let reverse;
@@ -86,9 +86,7 @@ class App extends React.Component {
 				<br />
 				<input ref='text' placeholder='Text' />
 				<button onClick={ this.addItem.bind(this) }>Add</button>
-				<Grid width='100%' height='500px'>
-					{ grid }
-				</Grid>
+				{ grid }
 			</div>
 		);
 	}
