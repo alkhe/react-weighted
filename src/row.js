@@ -4,9 +4,7 @@ import Weighted from '.';
 export default class extends React.Component {
 	render() {
 		return (
-			<Weighted>
-				{ this.props.children }
-			</Weighted>
+			<Weighted row { ...this.props } />
 		);
 	}
 }

@@ -48,7 +48,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
         var t = function t() {
           o(this, t), a(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
         };return (u(t, e), i(t, [{ key: "render", value: function value() {
-            return f["default"].createElement("div", { style: this.props.style, className: "item" }, this.props.children);
+            return f["default"].createElement("div", this.props);
           } }]), t);
       })(f["default"].Component);r["default"] = c, t.exports = r["default"];
     }, { react: "react" }], 2: [function (e, t, r) {
@@ -58,7 +58,12 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
         if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
       }function u(e, t) {
         if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (e.__proto__ = t);
-      }Object.defineProperty(r, "__esModule", { value: !0 });var i = (function () {
+      }Object.defineProperty(r, "__esModule", { value: !0 });var i = Object.assign || function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var r = arguments[t];for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
+        }return e;
+      },
+          a = (function () {
         function e(e, t) {
           for (var r = 0; r < t.length; r++) {
             var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
@@ -67,7 +72,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
           return (r && e(t.prototype, r), n && e(t, n), t);
         };
       })(),
-          a = function a(e, t, r) {
+          l = function l(e, t, r) {
         for (var n = !0; n;) {
           var o = e,
               u = t,
@@ -76,34 +81,106 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
           }var f = Object.getPrototypeOf(o);if (null === f) return void 0;e = f, t = u, r = i, n = !0;
         }
       },
-          l = e("react"),
-          f = n(l),
-          c = e("./row"),
-          p = n(c),
-          s = e("./column"),
-          d = n(s),
+          f = e("react"),
+          c = n(f),
+          p = e("."),
+          s = n(p),
           v = (function (e) {
-        function t() {
-          o(this, t), a(Object.getPrototypeOf(t.prototype), "constructor", this).call(this), this.state = {};
-        }return (u(t, e), i(t, [{ key: "render", value: function value() {
-            var e = this.props,
-                t = e.children,
-                r = void 0 === t ? [] : t,
-                n = e.column,
-                o = e.reverse,
-                u = (n ? "column" : "row") + (o ? "-reverse" : "");return (r = r.map(function (e) {
-              return f["default"].addons.cloneWithProps(e, { style: { flexGrow: e.props.weight, width: e.props.width } });
-            }), f["default"].createElement("div", { style: { display: "flex", flexDirection: u } }, r));
+        var t = function t() {
+          o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
+        };return (u(t, e), a(t, [{ key: "render", value: function value() {
+            return c["default"].createElement(s["default"], i({ column: !0 }, this.props));
           } }]), t);
-      })(f["default"].Component);r["default"] = v, r.Row = p["default"], r.Column = d["default"];
-    }, { "./column": 1, "./row": 3, react: "react" }], 3: [function (e, t, r) {
+      })(c["default"].Component);r["default"] = v, t.exports = r["default"];
+    }, { ".": 3, react: "react" }], 3: [function (e, t, r) {
+      "use strict";function n(e) {
+        return e && e.__esModule ? e : { "default": e };
+      }function o(e, t, r) {
+        return (t in e ? Object.defineProperty(e, t, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : e[t] = r, e);
+      }function u(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+      }function i(e, t) {
+        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (e.__proto__ = t);
+      }Object.defineProperty(r, "__esModule", { value: !0 });var a = (function () {
+        function e(e, t) {
+          var r = [],
+              n = !0,
+              o = !1,
+              u = void 0;try {
+            for (var i, a = e[Symbol.iterator](); !(n = (i = a.next()).done) && (r.push(i.value), !t || r.length !== t); n = !0);
+          } catch (l) {
+            o = !0, u = l;
+          } finally {
+            try {
+              !n && a["return"] && a["return"]();
+            } finally {
+              if (o) throw u;
+            }
+          }return r;
+        }return function (t, r) {
+          if (Array.isArray(t)) return t;if (Symbol.iterator in Object(t)) return e(t, r);throw new TypeError("Invalid attempt to destructure non-iterable instance");
+        };
+      })(),
+          l = (function () {
+        function e(e, t) {
+          for (var r = 0; r < t.length; r++) {
+            var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+          }
+        }return function (t, r, n) {
+          return (r && e(t.prototype, r), n && e(t, n), t);
+        };
+      })(),
+          f = function f(e, t, r) {
+        for (var n = !0; n;) {
+          var o = e,
+              u = t,
+              i = r;a = f = l = void 0, n = !1, null === o && (o = Function.prototype);var a = Object.getOwnPropertyDescriptor(o, u);if (void 0 !== a) {
+            if ("value" in a) return a.value;var l = a.get;return void 0 === l ? void 0 : l.call(i);
+          }var f = Object.getPrototypeOf(o);if (null === f) return void 0;e = f, t = u, r = i, n = !0;
+        }
+      },
+          c = e("react"),
+          p = n(c),
+          s = e("./row"),
+          v = n(s),
+          d = e("./column"),
+          y = n(d),
+          b = e("./cell"),
+          h = n(b),
+          w = (function (e) {
+        function t() {
+          u(this, t), f(Object.getPrototypeOf(t.prototype), "constructor", this).call(this), this.state = {};
+        }return (i(t, e), l(t, [{ key: "render", value: function value() {
+            var e,
+                t = this.props,
+                r = t.children,
+                n = void 0 === r ? [] : r,
+                u = t.column,
+                i = t.reverse,
+                l = (u ? "column" : "row") + (i ? "-reverse" : ""),
+                f = u ? ["height", "width"] : ["width", "height"],
+                c = a(f, 2),
+                s = c[0],
+                v = c[1],
+                d = this.props[s],
+                y = this.props[v];return (n = (n instanceof Array ? n : [n]).map(function (e) {
+              return p["default"].addons.cloneWithProps(e, { style: o({ flexGrow: e.props.weight }, s, e.props.size) });
+            }), p["default"].createElement("div", { style: (e = { display: "inline-flex", flexDirection: l }, o(e, s, d || "100%"), o(e, v, y), e) }, n));
+          } }]), t);
+      })(p["default"].Component);r["default"] = w, r.Row = v["default"], r.Column = y["default"], r.Cell = h["default"];
+    }, { "./cell": 1, "./column": 2, "./row": 4, react: "react" }], 4: [function (e, t, r) {
       "use strict";function n(e) {
         return e && e.__esModule ? e : { "default": e };
       }function o(e, t) {
         if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
       }function u(e, t) {
         if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (e.__proto__ = t);
-      }Object.defineProperty(r, "__esModule", { value: !0 });var i = (function () {
+      }Object.defineProperty(r, "__esModule", { value: !0 });var i = Object.assign || function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var r = arguments[t];for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
+        }return e;
+      },
+          a = (function () {
         function e(e, t) {
           for (var r = 0; r < t.length; r++) {
             var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
@@ -112,7 +189,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
           return (r && e(t.prototype, r), n && e(t, n), t);
         };
       })(),
-          a = function a(e, t, r) {
+          l = function l(e, t, r) {
         for (var n = !0; n;) {
           var o = e,
               u = t,
@@ -121,23 +198,25 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
           }var f = Object.getPrototypeOf(o);if (null === f) return void 0;e = f, t = u, r = i, n = !0;
         }
       },
-          l = e("react"),
-          f = n(l),
-          c = e("."),
-          p = n(c),
-          s = (function (e) {
+          f = e("react"),
+          c = n(f),
+          p = e("."),
+          s = n(p),
+          v = (function (e) {
         var t = function t() {
-          o(this, t), a(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
-        };return (u(t, e), i(t, [{ key: "render", value: function value() {
-            return f["default"].createElement(p["default"], null, this.props.children);
+          o(this, t), l(Object.getPrototypeOf(t.prototype), "constructor", this).apply(this, arguments);
+        };return (u(t, e), a(t, [{ key: "render", value: function value() {
+            return c["default"].createElement(s["default"], i({ row: !0 }, this.props));
           } }]), t);
-      })(f["default"].Component);r["default"] = s, t.exports = r["default"];
-    }, { ".": 2, react: "react" }] }, {}, [2])(2);
+      })(c["default"].Component);r["default"] = v, t.exports = r["default"];
+    }, { ".": 3, react: "react" }] }, {}, [3])(3);
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],2:[function(require,module,exports){
 'use strict';
+
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -166,7 +245,8 @@ var App = (function (_React$Component) {
 		_get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this);
 		this.state = {
 			items: [],
-			weightMode: true
+			weightMode: true,
+			rowMode: true
 		};
 	}
 
@@ -180,16 +260,23 @@ var App = (function (_React$Component) {
 			var refs = this.refs;
 			var state = this.state;
 
-			var metric = state.weightMode ? 'weight' : 'width';
+			var metric = state.weightMode ? 'weight' : 'size';
 			this.setState({
 				items: this.state.items.concat((_state$items$concat = {}, _defineProperty(_state$items$concat, metric, _react2['default'].findDOMNode(refs[metric]).value), _defineProperty(_state$items$concat, 'value', _react2['default'].findDOMNode(refs.text).value), _state$items$concat))
 			});
 		}
 	}, {
-		key: 'switchMode',
-		value: function switchMode() {
+		key: 'switchWeightMode',
+		value: function switchWeightMode() {
 			this.setState({
 				weightMode: !this.state.weightMode
+			});
+		}
+	}, {
+		key: 'switchRowMode',
+		value: function switchRowMode() {
+			this.setState({
+				rowMode: !this.state.rowMode
 			});
 		}
 	}, {
@@ -199,19 +286,45 @@ var App = (function (_React$Component) {
 
 			var items = state.items.map(function (item) {
 				return _react2['default'].createElement(
-					_distWeighted.Column,
-					{ weight: item.weight, width: item.width },
+					_distWeighted.Cell,
+					{ weight: item.weight, size: item.size, className: 'item' },
 					item.value
 				);
 			});
+
+			var _ref = state.weightMode ? [_react2['default'].createElement('input', { type: 'checkbox', onChange: this.switchWeightMode.bind(this), checked: true }), _react2['default'].createElement('input', { ref: 'weight', placeholder: 'Weight' }), _react2['default'].createElement('input', { ref: 'size', placeholder: 'Size', disabled: true })] : [_react2['default'].createElement('input', { type: 'checkbox', onChange: this.switchWeightMode.bind(this) }), _react2['default'].createElement('input', { ref: 'weight', placeholder: 'Weight', disabled: true }), _react2['default'].createElement('input', { ref: 'size', placeholder: 'Size' })];
+
+			var _ref2 = _slicedToArray(_ref, 3);
+
+			var weightMode = _ref2[0];
+			var weightInput = _ref2[1];
+			var sizeInput = _ref2[2];
+
+			var _ref3 = state.rowMode ? [_react2['default'].createElement('input', { type: 'checkbox', onChange: this.switchRowMode.bind(this), checked: true }), _react2['default'].createElement(
+				_distWeighted.Row,
+				null,
+				items
+			)] : [_react2['default'].createElement('input', { type: 'checkbox', onChange: this.switchRowMode.bind(this) }), _react2['default'].createElement(
+				_distWeighted.Column,
+				null,
+				items
+			)];
+
+			var _ref32 = _slicedToArray(_ref3, 2);
+
+			var rowMode = _ref32[0];
+			var grid = _ref32[1];
+
 			return _react2['default'].createElement(
 				'div',
 				null,
-				state.weightMode ? _react2['default'].createElement('input', { type: 'checkbox', onChange: this.switchMode.bind(this), checked: true }) : _react2['default'].createElement('input', { type: 'checkbox', onChange: this.switchMode.bind(this) }),
+				weightMode,
 				' Weight Mode',
+				rowMode,
+				' Row Mode',
 				_react2['default'].createElement('br', null),
-				state.weightMode ? _react2['default'].createElement('input', { ref: 'weight', placeholder: 'Weight' }) : _react2['default'].createElement('input', { ref: 'weight', placeholder: 'Weight', disabled: true }),
-				state.weightMode ? _react2['default'].createElement('input', { ref: 'width', placeholder: 'Width', disabled: true }) : _react2['default'].createElement('input', { ref: 'width', placeholder: 'Width' }),
+				weightInput,
+				sizeInput,
 				_react2['default'].createElement('br', null),
 				_react2['default'].createElement('input', { ref: 'text', placeholder: 'Text' }),
 				_react2['default'].createElement(
@@ -220,9 +333,9 @@ var App = (function (_React$Component) {
 					'Add'
 				),
 				_react2['default'].createElement(
-					_distWeighted2['default'],
-					null,
-					items
+					_distWeighted.Row,
+					{ width: '100%', height: '500px' },
+					grid
 				)
 			);
 		}

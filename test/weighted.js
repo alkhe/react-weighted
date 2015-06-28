@@ -1,17 +1,18 @@
 import React from 'react';
-import Weighted, { Row, Column } from '../dist/weighted';
+import Weighted, { Row, Column, Cell } from '../dist/weighted';
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			items: [],
-			weightMode: true
+			weightMode: true,
+			rowMode: true
 		};
 	}
 	addItem() {
 		let { refs, state } = this;
-		let metric = state.weightMode ? 'weight' : 'width';
+		let metric = state.weightMode ? 'weight' : 'size';
 		this.setState({
 			items: this.state.items.concat({
 				[metric]: React.findDOMNode(refs[metric]).value,
@@ -19,31 +20,58 @@ class App extends React.Component {
 			})
 		});
 	}
-	switchMode() {
+	switchWeightMode() {
 		this.setState({
 			weightMode: !this.state.weightMode
+		});
+	}
+	switchRowMode() {
+		this.setState({
+			rowMode: !this.state.rowMode
 		});
 	}
 	render() {
 		let { state } = this;
 
 		let items = state.items.map(item =>
-			<Column weight={ item.weight } width={ item.width }>
+			<Cell weight={ item.weight } size={ item.size } className='item'>
 				{ item.value }
-			</Column>
+			</Cell>
 		);
+
+		let [weightMode, weightInput, sizeInput] = state.weightMode
+			? [
+				<input type='checkbox' onChange={ this.switchWeightMode.bind(this) } checked />,
+				<input ref='weight' placeholder='Weight' />,
+				<input ref='size' placeholder='Size' disabled />
+			] : [
+				<input type='checkbox' onChange={ this.switchWeightMode.bind(this) } />,
+				<input ref='weight' placeholder='Weight' disabled />,
+				<input ref='size' placeholder='Size' />
+			];
+
+		let [rowMode, grid] = state.rowMode
+			? [
+				<input type='checkbox' onChange={ this.switchRowMode.bind(this) } checked />,
+				<Row>{ items }</Row>
+			] : [
+				<input type='checkbox' onChange={ this.switchRowMode.bind(this) } />,
+				<Column>{ items }</Column>
+			];
+
 		return (
 			<div>
-				{ state.weightMode ? <input type='checkbox' onChange={ this.switchMode.bind(this) } checked /> : <input type='checkbox' onChange={ this.switchMode.bind(this) } /> } Weight Mode
+				{ weightMode } Weight Mode
+				{ rowMode } Row Mode
 				<br />
-				{ state.weightMode ? <input ref='weight' placeholder='Weight' /> : <input ref='weight' placeholder='Weight' disabled /> }
-				{ state.weightMode ? <input ref='width' placeholder='Width' disabled /> : <input ref='width' placeholder='Width' /> }
+				{ weightInput }
+				{ sizeInput }
 				<br />
 				<input ref='text' placeholder='Text' />
 				<button onClick={ this.addItem.bind(this) }>Add</button>
-				<Weighted>
-					{ items }
-				</Weighted>
+				<Row width='100%' height='500px'>
+					{ grid }
+				</Row>
 			</div>
 		);
 	}

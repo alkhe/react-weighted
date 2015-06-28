@@ -2,6 +2,7 @@ import React from 'react';
 
 import Row from './row';
 import Column from './column';
+import Cell from './cell';
 
 class Weighted extends React.Component {
 	constructor() {
@@ -12,18 +13,25 @@ class Weighted extends React.Component {
 		let { children = [], column, reverse } = this.props;
 
 		let direction = (column ? 'column' : 'row') + (reverse ? '-reverse' : '');
+		let [metric, antimetric] = (column ? ['height', 'width'] : ['width', 'height']);
+		let [staticMetric, staticAntimetric] = [this.props[metric], this.props[antimetric]];
 
-		children = children.map(child => {
+		children = (children instanceof Array ? children : [children]).map(child => {
 			return React.addons.cloneWithProps(child, {
 				style: {
 					flexGrow: child.props.weight,
-					width: child.props.width
+					[metric]: child.props.size
 				}
 			});
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: direction }}>
+			<div style={{
+					display: 'inline-flex',
+					flexDirection: direction,
+					[metric]: staticMetric || '100%',
+					[antimetric]: staticAntimetric
+				}}>
 				{ children }
 			</div>
 		)
@@ -34,5 +42,6 @@ export default Weighted;
 
 export {
 	Row,
-	Column
+	Column,
+	Cell
 }
