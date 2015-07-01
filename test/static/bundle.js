@@ -269,7 +269,7 @@ _react2['default'].render(_react2['default'].createElement(App, null), document.
             c = e.along,
             p = e.towards,
             s = e.priority,
-            d = { flexGrow: i, flexShrink: a, flexBasis: l, alignSelf: o[p] || p, order: s };if (t) {
+            d = { flexGrow: i, flexShrink: a, flexBasis: l || 0, alignSelf: o[p] || p, order: s };if (t) {
           var v = (r ? "column" : "row") + (u ? "-reverse" : ""),
               y = r ? ["height", "width"] : ["width", "height"],
               b = n(y, 2),

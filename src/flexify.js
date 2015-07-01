@@ -11,7 +11,7 @@ export default function(props, grid) {
 	let style = {
 		flexGrow: weight,
 		flexShrink: shrink,
-		flexBasis: size,
+		flexBasis: size || 0,
 		alignSelf: alignMap[towards] || towards,
 		order: priority
 	};
