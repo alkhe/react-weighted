@@ -6,7 +6,7 @@ let alignMap = {
 };
 
 export default function(props, grid) {
-	let { column, reverse, weight, shrink, size, align, along, towards, priority } = props;
+	let { width, height, row, column, reverse, weight, shrink, size, align, along, towards, priority, ...safe } = props;
 
 	let style = {
 		flexGrow: weight,
@@ -29,20 +29,5 @@ export default function(props, grid) {
 		style[antimetric] = staticAntimetric;
 	}
 
-	delete props.width;
-	delete props.height;
-
-	delete props.row;
-	delete props.column;
-
-	delete props.reverse;
-	delete props.weight;
-	delete props.shrink;
-	delete props.size;
-	delete props.align;
-	delete props.along;
-	delete props.towards;
-	delete props.priority;
-
-	return style;
+	return [style, safe];
 };

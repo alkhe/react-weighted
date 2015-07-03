@@ -3,11 +3,10 @@ import flexify from './flexify';
 
 export default class extends React.Component {
 	render() {
-		let { props } = this;
-		let flex = flexify(props);
+		let [flex, safeprops] = flexify(this.props);
 
 		return (
-			<div style={ flex } { ...this.props } />
+			<div style={ flex } { ...safeprops } />
 		);
 	}
 }
