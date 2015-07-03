@@ -2,9 +2,10 @@
 
 `react-weighted` is a flexbox-based grid system for React, inspired by Android `LinearLayout`s.
 
-A weighted (parts-based) grid is more flexible and applicable than the conventional 12-unit grid provided by Bootstrap and other similar libraries. The W3C Flexbox spec introduced parts-based layouts with `flex-grow`, along with various other useful CSS layout properties. `react-weighted` packages the flexbox module into an intuitive and unobtrusive set of React components, composed into a grid system.
+A weighted (parts-based) grid is more flexible and applicable than the conventional 12-unit grid provided by Bootstrap and other similar libraries. The W3C Flexbox spec introduced parts-based layouts with `flex-grow`, along with various other useful CSS layout properties. `react-weighted` packages the flexbox module into an clean and unobtrusive set of React components and composes them into a grid system.
 
-[Flexbox on CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[CSS Tricks on Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Flexbox Ultimate Guide](http://www.sketchingwithcss.com/samplechapter/cheatsheet.html)
 
 ## Installation
 
