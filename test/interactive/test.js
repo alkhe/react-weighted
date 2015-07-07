@@ -45,41 +45,22 @@ class App extends React.Component {
 			</Cell>
 		);
 
-		let [weightMode, weightInput, sizeInput] = state.weightMode
-			? [
-				<input type='checkbox' onChange={ this.switchWeightMode.bind(this) } checked />,
-				<input ref='weight' placeholder='Weight' />,
-				<input ref='size' placeholder='Size' disabled />
-			] : [
-				<input type='checkbox' onChange={ this.switchWeightMode.bind(this) } />,
-				<input ref='weight' placeholder='Weight' disabled />,
-				<input ref='size' placeholder='Size' />
-			];
+		let weightTick = <input type='checkbox' onChange={ this.switchWeightMode.bind(this) } checked={ state.weightMode } />,
+			weightInput = <input ref='weight' placeholder='Weight' disabled={ !state.weightMode }/>,
+			sizeInput = <input ref='size' placeholder='Size' disabled={ state.weightMode} />;
 
-		let [rowMode, grid] = state.rowMode
-			? [
-				<input type='checkbox' onChange={ this.switchRowMode.bind(this) } checked />,
-				<Row height='500px'>{ items }</Row>
-			] : [
-				<input type='checkbox' onChange={ this.switchRowMode.bind(this) } />,
-				<Column height='500px'>{ items }</Column>
-			];
+		let rowTick = <input type='checkbox' onChange={ this.switchRowMode.bind(this) } checked={ state.rowMode } />,
+			Direction = state.rowMode ? Row : Column;
 
-		let reverse;
-		[reverse, grid] = state.reverse
-			? [
-				<input type='checkbox' onChange={ this.reverse.bind(this) } checked />,
-				React.addons.cloneWithProps(grid, { reverse: true })
-			] : [
-				<input type='checkbox' onChange={ this.reverse.bind(this) } />,
-				grid
-			];
+		let grid = <Direction height='500px' reverse={ state.reverse }>{ items }</Direction>;
+
+		let reverseTick = <input type='checkbox' onChange={ this.reverse.bind(this) } checked={ state.reverse } />;
 
 		return (
 			<div>
-				{ weightMode } Weight Mode
-				{ rowMode } Row Mode
-				{ reverse } Reverse
+				{ weightTick } Weight Mode
+				{ rowTick } Row Mode
+				{ reverseTick } Reverse
 				<br />
 				{ weightInput }
 				{ sizeInput }
