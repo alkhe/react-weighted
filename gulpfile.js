@@ -2,7 +2,7 @@ var gulp = require('gulp'),
 	babel = require('gulp-babel'),
 	uglify = require('gulp-uglify'),
 	b = require('browserify'),
-	babelify = require('babelify'),
+	babelify = require('babelify').configure({ stage: 0 }),
 	source = require('vinyl-source-stream'),
 	buf = require('vinyl-buffer');
 
@@ -15,7 +15,7 @@ gulp.task('watch', function() {
 
 gulp.task('npm', function() {
 	return gulp.src('./src/**/*.js')
-		.pipe(babel())
+		.pipe(babel({ stage: 0 }))
 		.pipe(gulp.dest('./lib'));
 });
 

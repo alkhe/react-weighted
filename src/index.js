@@ -12,12 +12,11 @@ class Grid extends React.Component {
 		this.state = {};
 	}
 	render() {
-		let { props } = this;
-		let flex = flexify(props, true);
+		let [flex, safeprops] = flexify(this.props, true);
 
 		return (
-			<div style={ flex } { ...props }>
-				{ props.children }
+			<div style={ flex } { ...safeprops }>
+				{ safeprops.children }
 			</div>
 		);
 	}
